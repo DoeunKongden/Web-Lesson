@@ -138,8 +138,6 @@ myArrowFunction = () => {
 myArrowFunction()
 
 
-
-
 //Function Calling Other Function
 
 
