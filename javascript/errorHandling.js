@@ -26,5 +26,52 @@ const makeError = () => {
         console.error(err.stack) // and also the stack of the error
     }
 }
-
 makeError()
+
+
+//Type of error
+// // Syntax Error
+// console.log("Hello, World"  // Missing closing parenthesis
+
+// // Reference Error
+// console.log(undefinedVariable);  // undefinedVariable is not defined
+
+// // Type Error
+// let number = 42;
+// number.toUpperCase();  // toUpperCase is not a function for numbers
+
+// // Runtime Error
+// let object = null;
+// console.log(object.property);  // Cannot read property 'property' of null
+
+
+//Finally Statement : code in finally statement will always execute after the try code block is done executing
+// try {
+//     let a = 1, b = 3;
+//     console.log("Total is : ", a + b);
+// } catch (error) {
+//     console.error("This causes an error.");
+// }
+// finally {
+//     console.log("This is a finally block.")
+// }
+
+
+
+//Throw statement  : 
+function getRectArea(width, height) {
+    try {
+        if (isNaN(width) || isNaN(height)) {
+            throw new Error("Parameter is not a number.")
+        }
+        document.getElementById("liter").innerHTML = width * height;
+    }
+    catch (e) {
+        console.error(e);
+    }
+}
+
+
+
+
+
