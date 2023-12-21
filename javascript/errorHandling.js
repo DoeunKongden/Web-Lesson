@@ -15,18 +15,18 @@
 
 
 
-const makeError = () => {
-    try {
-        const name = "Dave";
-        name = "joe"
-    } catch (err) { //the value inside the catch parameter is called a catchID but we can refer to as any name we want
-        console.error(err) //this is the full property of the array
-        console.error(err.name) //but we can also get the name of the err
-        console.error(err.message) // and also the message 
-        console.error(err.stack) // and also the stack of the error
-    }
-}
-makeError()
+// const makeError = () => {
+//     try {
+//         const name = "Dave";
+//         name = "joe"
+//     } catch (err) { //the value inside the catch parameter is called a catchID but we can refer to as any name we want
+//         console.error(err) //this is the full property of the array
+//         console.error(err.name) //but we can also get the name of the err
+//         console.error(err.message) // and also the message 
+//         console.error(err.stack) // and also the stack of the error
+//     }
+// }
+// makeError()
 
 
 //Type of error
@@ -58,6 +58,15 @@ makeError()
 
 
 
+
+
+// let z = '20' - 2 + '90' // this will get a result of 1890 because of the `+` operator 
+// the + operator can be use with a string and a number 
+// if the + operator encounter the string first the operation will turn into concatenation 
+// if it doesn't encounter the string first than it will be a normall substraction and addition 
+
+// console.log(z)
+
 //Throw statement  : 
 function getRectArea(width, height) {
     try {
@@ -70,6 +79,8 @@ function getRectArea(width, height) {
         console.error(e);
     }
 }
+
+getRectArea('hello','19')
 
 
 
