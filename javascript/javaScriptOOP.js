@@ -92,6 +92,20 @@ function Circle(radius) {
         return defaultLocation;
     }
 
+    //defining a property 
+    Object.defineProperty(this, 'defaultLocation', {
+        get: function () {
+            return defaultLocation;
+        },
+        set: function (value) {
+            if (!value.x || !value.y) {
+                throw new Error('invalid location')
+            }
+            defaultLocation = value
+        }
+
+    }) //there are 3 argument to this method 
+
 
     let computeOptimumLocation = function (factor) {
         this.computeOptimumLocation
@@ -116,9 +130,59 @@ const circle = new Circle(10)
 //Now we are try to access the member of the object and we will see that only draw and radius is available for us to use
 // circle.draw
 
+console.log('before setter :', circle.defaultLocation)
+// circle.defaultLocation = {1,2};
 
 
-//Using getter and setter
 
 
+//Create a StopWatch class and let it have one properties which is the duration and three method which are reset start stop
+
+function StopWatch() {
+    let duration = 0, startTime, endTime, running;
+
+    this.start = function () {
+        if(running){
+            throw new Error('Stopwatch is already running')
+        }else{
+            running = true;
+            startTime = new Date();
+        }
+
+    }
+
+    this.stop = function () {
+        if(!running){
+            throw new Error('Stopwatch is not started.');
+        }else{
+            running = false;
+
+            endTime = new Date();
+
+            const seconds = (endTime.getTime() - startTime.getTime()) / 1000;
+
+            duration += seconds
+
+
+            console.log("Duration : ",duration)
+        }
+    }
+
+    this.reset = function () {
+        startTime = null;
+        endTime = null;
+        running = false;
+        duration = 0;
+    }
+
+    Object.defineProperty(this, 'duration', {
+        get: function () {
+            return duration;
+        }
+    })
+}
+
+//Encepsulation in javascript
+//Encapsulation : is defined as the wrapping up of data under a single unit
+//The javascript encapsulation is a process of binding the data with function acting on that data
 
