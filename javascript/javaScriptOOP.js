@@ -137,14 +137,13 @@ console.log('before setter :', circle.defaultLocation)
 
 
 //Create a StopWatch class and let it have one properties which is the duration and three method which are reset start stop
-
 function StopWatch() {
     let duration = 0, startTime, endTime, running;
 
     this.start = function () {
-        if(running){
+        if (running) {
             throw new Error('Stopwatch is already running')
-        }else{
+        } else {
             running = true;
             startTime = new Date();
         }
@@ -152,9 +151,9 @@ function StopWatch() {
     }
 
     this.stop = function () {
-        if(!running){
+        if (!running) {
             throw new Error('Stopwatch is not started.');
-        }else{
+        } else {
             running = false;
 
             endTime = new Date();
@@ -164,7 +163,7 @@ function StopWatch() {
             duration += seconds
 
 
-            console.log("Duration : ",duration)
+            console.log("Duration : ", duration)
         }
     }
 
@@ -183,6 +182,124 @@ function StopWatch() {
 }
 
 //Encepsulation in javascript
-//Encapsulation : is defined as the wrapping up of data under a single unit
+//Encapsulation : is defined as the wrapping up of data under a single unit in our case is a class
 //The javascript encapsulation is a process of binding the data with function acting on that data
+class Student {
+    constructor() {
+        let name, marks;
+    }
 
+    getName() {
+        return this.name;
+    }
+
+    setName(name) {
+        this.name = name;
+    }
+
+    getMarks() {
+        return this.marks;
+    }
+
+    setMarks(marks) {
+        this.marks = marks
+    }
+}
+
+
+let stu = new Student()
+
+stu.setName('kongden');
+stu.setMarks(90);
+
+console.log(`student : ${stu.getName()} got ${stu.getMarks()} in math`)
+
+
+//Javascript inheritance 
+class A {
+    a = 100;
+    display() {
+        console.log(this.a)
+    }
+}
+
+class B extends A { // now B become the child class of A class 
+    b = 200;
+    show() {
+        console.log(this.b)
+    }
+}
+
+bObject = new B();
+bObject.display()
+bObject.show()
+
+
+
+//Method overriding concept 
+class Bank {
+
+
+    roi() {
+        return 0;
+    }
+}
+
+class AXIS extends Bank {
+
+    roi() {
+        return 10.5; //overriding the method roi in the parent class A
+    }
+}
+
+class SBI extends Bank {
+
+    roi() {
+        return 12.5; //overriding the method roi in the parent class A
+    }
+}
+
+sbi = new SBI();
+
+console.log(sbi.roi())
+
+
+
+//Using super keyword in inheritance 
+class Animal {
+
+
+    constructor(color) {
+        this.color = color
+    }
+
+
+    showColor() {
+        console.log(this.color)
+    }
+}
+
+
+class Dog extends Animal {
+    constructor(color, food) {
+        super(color);
+        this.food = food
+    }
+
+    eating() {
+        console.log("Eating",this.food)
+    }
+
+    // const functionExpresion = () => { //cannot use const or let or var in the class 
+
+    // }
+
+    display(){
+        this.showColor();
+        this.eating();
+    }
+}
+
+
+d = new Dog("Black","Pizza");
+d.display()
