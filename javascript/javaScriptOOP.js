@@ -280,26 +280,116 @@ class Animal {
 }
 
 
+//In javascript class we can only defined methods and properties but we can't directly define variable using 
+//the keyword like 'const' , 'let' , 'var' inside the class body.
+
+//The reason for this is becauase the class bodie in javaScript are limited to method definitions only 
+//Classes syntax intended to be a concise way to define constructor function and prototype methods only
+//The only way to create class-level variable is by declaring them within the constructor.
 class Dog extends Animal {
+
     constructor(color, food) {
         super(color);
         this.food = food
     }
 
     eating() {
-        console.log("Eating",this.food)
+        console.log("Eating", this.food)
     }
 
     // const functionExpresion = () => { //cannot use const or let or var in the class 
 
     // }
 
-    display(){
+    display() {
         this.showColor();
         this.eating();
     }
 }
 
-
-d = new Dog("Black","Pizza");
+d = new Dog("Black", "Pizza");
 d.display()
+
+
+//Prototyping in javascript
+//Prototype is an object that is associated with every function and object by default
+function student(){
+    this.name = "john"
+    this.gender = "male";
+}
+
+//this is useful when we want to later add new properties or method to our class
+student.prototype.age = 35; //this will allow any object to have access to the age variable 
+
+const stu1 = new student()
+console.log("student name :", stu1.name)
+console.log("student gender : ",stu1.gender)
+stu1.age = 35
+
+console.log("student age :",stu1.age)
+
+const stu2 = new student()
+console.log(stu2.gender,stu2.name,stu2.age)
+
+//Creating one variable that will belong to all of the object is what a Prototype is
+
+
+//Another example of prototyping 
+class Employee {
+    constructor(eid, ename) {
+        this.id = eid;
+        this.ename = ename;
+    }
+}
+
+//adding variable to class by using prototype
+Employee.prototype.salary = 5000;
+
+//adding function to class by using prototype
+Employee.prototype.display = function(){
+    console.log(this.ename,this.id,this.salary)  //this function will be available for all the object instantiated from the class
+}
+
+const emp = new Employee(10, 'david');
+emp.salary = 3000
+
+// emp.ename,emp.id,emp.salary //as we can see we can asscess the salary property aswell 
+console.log(emp.ename, emp.id, emp.salary)
+
+const emp1 = new Employee(11,'jonh')
+console.log(emp1.ename,emp1.id,emp1.salary)
+
+
+
+//Javascript polymorphism 
+//Polymorphism is the ability to createa a variable, a function or an object that has more than one form.
+class Shape{
+    draw(){
+        return "I am a shape :)";
+    }
+}
+
+class Square extends Shape{
+    draw(){
+        return "I am a square now :)";
+    }
+}
+
+
+class Circle2 extends Shape{
+    draw(){
+        return "I am a circle :((";
+    }
+}
+
+//creating 3 different object 
+//This is also known as method overriding 
+const s = new Shape()
+console.log(s.draw())
+
+const ss = new Square()
+console.log(ss.draw())
+
+const cir = new Circle2()
+console.log(cir.draw())
+
